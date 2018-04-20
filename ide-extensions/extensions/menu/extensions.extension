@@ -1,5 +1,5 @@
 {
-	"module": "ide-extensions/services/menu/extensions",
+	"module": "ide-extensions/perspective/menu/extensions",
 	"extensionPoint": "ide-extensions-menu",
-	"description": "extensions Menu"
+	"description": "Extensions Menu"
 }
