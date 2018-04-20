@@ -10,7 +10,7 @@
 
 exports.getMenu = function() {
 	return {
-		"name": "extensions",
+		"name": "Extensions",
 		"link": "#",
 		"order": "100",
 		"onClick": "alert('Terminal has been clicked')",
