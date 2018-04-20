@@ -1,0 +1,5 @@
+{
+	"module": "ide-extensions/services/menu/extensions",
+	"extensionPoint": "ide-extensions-menu",
+	"description": "extensions Menu"
+}
