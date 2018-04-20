@@ -9,7 +9,7 @@
   ~ SAP - initial API and implementation
   -->
 
-<html lang="en">
+<html lang="en" ng-app="extensionPoints">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,8 +26,49 @@
 	<link type="text/css" rel="stylesheet" href="/services/v3/core/theme/bootstrap.min.css">
 </head>
 
-<body>
-	<h1>Hello World Extension Points!</h1>
+<body ng-controller="ExtensionPointsController">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Location</th>
+				<th>Name</th>
+				<th>Description</th>
+				<th>Created By</th>
+				<th>Created At</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="next in extensionPoints">
+				<td>{{$index + 1}}</td>
+				<td>{{next.location}}</td>
+				<td>{{next.name}}</td>
+				<td>{{next.description}}</td>
+				<td>{{next.createdBy}}</td>
+				<td>{{next.createdAt}}</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<script type="text/javascript" src="/services/v3/web/resources/angular/1.4.7/angular.min.js"></script>
+	<script type="text/javascript" src="/services/v3/web/resources/angular/1.4.7/angular-resource.min.js"></script>
+	<script>
+		angular.module('extensionPoints', []);
+		angular.module('extensionPoints').controller('ExtensionPointsController', function ($scope, $http) {
+		
+		    var extensionPointsApi = '/services/v3/js/ide-extensions/services/extensionPoints.js';
+		
+		    function loadExtensionPoints() {
+		        $http.get(extensionPointsApi)
+		        .success(function(data) {
+		            $scope.extensionPoints = data;
+		        });
+		    }
+		
+		    loadExtensionPoints();
+		});
+	</script>
 </body>
+
 
 </html>
