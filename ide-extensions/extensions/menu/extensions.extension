@@ -1,5 +1,0 @@
-{
-	"module": "ide-extensions/perspective/menu/extensions",
-	"extensionPoint": "ide-extensions-menu",
-	"description": "Extensions Menu"
-}

@@ -1,5 +1,0 @@
-{
-	"module": "ide/services/menu/window",
-	"extensionPoint": "ide-extensions-menu",
-	"description": "Window Menu"
-}
