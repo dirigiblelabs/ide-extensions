@@ -13,7 +13,7 @@ exports.getView = function() {
 		"id": "extensionPoints",
 		"name": "Extension Points",
 		"factory": "frame",
-		"region": "center-bottom",
+		"region": "center-top",
 		"label": "Extension Points",
 		"link": "../ide-extensions/views/extensionPoints/index.html"
 	};

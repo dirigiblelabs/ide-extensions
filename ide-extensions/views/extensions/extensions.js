@@ -13,7 +13,7 @@ exports.getView = function() {
 		"id": "extensions",
 		"name": "Extensions",
 		"factory": "frame",
-		"region": "center-bottom",
+		"region": "center-top",
 		"label": "Extensions",
 		"link": "../ide-extensions/views/extensions/index.html"
 	};
