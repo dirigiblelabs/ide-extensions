@@ -11,7 +11,7 @@
 exports.getView = function() {
 	return {
 		"id": "extensionPoints",
-		"name": "Extension Points",
+		"name": "ExtensionPoints",
 		"factory": "frame",
 		"region": "center-top",
 		"label": "Extension Points",
