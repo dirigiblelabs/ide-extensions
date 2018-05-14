@@ -10,11 +10,11 @@
 
 exports.getView = function() {
 	return {
-		"id": "extensionPoints",
-		"name": "Extension Points",
+		"id": "extension-points",
+		"name": "ExtensionPoints",
 		"factory": "frame",
 		"region": "center-top",
 		"label": "Extension Points",
-		"link": "../ide-extensions/views/extensionPoints/index.html"
+		"link": "../ide-extensions/views/extension-points/index.html"
 	};
 };
