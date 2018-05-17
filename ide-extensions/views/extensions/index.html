@@ -27,27 +27,57 @@
 </head>
 
 <body ng-controller="ExtensionsController">
-	<table class="table table-striped">
+	<table class="table table-striped" ng-cloak>
 		<thead>
 			<tr>
 				<th>#</th>
 				<th>Location</th>
-				<th>Extension Point</th>
-				<th>Module</th>
+				<th>Name</th>
 				<th>Description</th>
+				<!--
 				<th>Created By</th>
 				<th>Created At</th>
+				-->
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="next in extensions">
+			<tr ng-repeat="next in extensionPoints">
 				<td>{{$index + 1}}</td>
-				<td>{{next.location}}</td>
-				<td>{{next.extensionPoint}}</td>
-				<td>{{next.module}}</td>
-				<td>{{next.description}}</td>
-				<td>{{next.createdBy}}</td>
-				<td>{{next.createdAt}}</td>
+				<td>{{next.extensionPoint.location}}</td>
+				<td>{{next.extensionPoint.name}}</td>
+				<td>{{next.extensionPoint.description}}</td>
+				<!--
+				<td>{{next.extensionPoint.createdBy}}</td>
+				<td>{{next.extensionPoint.createdAt}}</td>
+				-->
+				<td>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Location</th>
+								<th>Module</th>
+								<th>Description</th>
+								<!--
+								<th>Created By</th>
+								<th>Created At</th>
+								-->
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="extension in next.extensions">
+								<td>{{$index + 1}}</td>
+								<td>{{extension.location}}</td>
+								<td>{{extension.module}}</td>
+								<td>{{extension.description}}</td>
+								<!--
+								<td>{{extension.createdBy}}</td>
+								<td>{{extension.createdAt}}</td>
+								-->
+							</tr>
+						</tbody>
+					</table>
+				</td>
 			</tr>
 		</tbody>
 	</table>
@@ -58,12 +88,12 @@
 		angular.module('extensions', []);
 		angular.module('extensions').controller('ExtensionsController', function ($scope, $http) {
 		
-		    var extensionsApi = '/services/v3/js/ide-extensions/services/extensions.js';
+		    var extensionsApi = '/services/v3/core/extensions';
 		
 		    function loadExtensions() {
 		        $http.get(extensionsApi)
 		        .success(function(data) {
-		            $scope.extensions = data;
+		            $scope.extensionPoints = data;
 		        });
 		    }
 		
