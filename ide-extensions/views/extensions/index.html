@@ -24,28 +24,24 @@
 		
 	<!-- Twitter Bootstrap with Theme Support -->
 	<link type="text/css" rel="stylesheet" href="/services/v3/core/theme/bootstrap.min.css">
+	
+	<!-- Custom IDE Styles -->
+	<link type="text/css" rel="stylesheet" href="/services/v3/core/theme/ide.css" />
+	
 </head>
 
 <body ng-controller="ExtensionsController">
-	<table class="table table-striped" ng-cloak>
-		<thead>
-			<tr>
-				<th>#</th>
-				<th>Location</th>
-				<th>Name</th>
-				<th>Description</th>
-				<!--
-				<th>Created By</th>
-				<th>Created At</th>
-				-->
-			</tr>
-		</thead>
-		<tbody>
-			<tr ng-repeat="next in extensionPoints">
-				<td>{{$index + 1}}</td>
-				<td>{{next.extensionPoint.location}}</td>
-				<td>{{next.extensionPoint.name}}</td>
-				<td>{{next.extensionPoint.description}}</td>
+	
+			<div ng-repeat="next in extensionPoints">
+				<hr>
+				<h4>
+					<label>Name:</label> {{next.extensionPoint.name}}
+					<label>Location:</label> {{next.extensionPoint.location}}
+				</h4>
+				<h4>
+					<i>{{next.extensionPoint.description}}</i>
+				</h4>
+				<hr>
 				<!--
 				<td>{{next.extensionPoint.createdBy}}</td>
 				<td>{{next.extensionPoint.createdAt}}</td>
@@ -78,9 +74,8 @@
 						</tbody>
 					</table>
 				</td>
-			</tr>
-		</tbody>
-	</table>
+			</div>
+		
 
 	<script type="text/javascript" src="/services/v3/web/resources/angular/1.4.7/angular.min.js"></script>
 	<script type="text/javascript" src="/services/v3/web/resources/angular/1.4.7/angular-resource.min.js"></script>
