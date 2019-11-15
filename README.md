@@ -9,7 +9,7 @@ Extension Points and Extensions Plugins for the [Eclipse Dirigible](https://gith
 
 Build the [Eclipse Dirigible](https://github.com/eclipse/dirigible), deploy on e.g. Tomcat Web Container and go to location:
 
-> http://localhost:8080/services/v3/web/ide-extensions/index.html
+> http://localhost:8080/services/v4/web/ide-extensions/index.html
 
 ## License
 
