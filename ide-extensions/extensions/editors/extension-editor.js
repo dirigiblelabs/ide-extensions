@@ -8,15 +8,14 @@
  * Contributors:
  *   SAP - initial API and implementation
  */
-exports.getEditor = function() {
-	var editor = {
-			"id":"extension",
-			"name":"Extension",
-			"factory":"frame",
-			"region":"center-top",
-			"label":"Extension",
-			"link":"../ide-extensions/editors/extension/editor.html",
-			"contentTypes":["application/json+extension"]
+exports.getEditor = function () {
+	return {
+		"id": "extension",
+		"name": "Extension",
+		"factory": "frame",
+		"region": "center-top",
+		"label": "Extension",
+		"link": "../ide-extensions/editors/extension/editor.html",
+		"contentTypes": ["application/json+extension"]
 	};
-	return editor;
 };

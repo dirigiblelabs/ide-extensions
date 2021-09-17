@@ -8,12 +8,11 @@
  * Contributors:
  *   SAP - initial API and implementation
  */
-exports.getTemplate = function() {
-	var template = {
-			"name":"extension",
-			"label":"Extension",
-			"extension":"extension",
-			"data":'{"module":"/myproject/my-extension.js","extensionPoint":"my-extension-point","description":"My Extension"}'
+exports.getTemplate = function () {
+	return {
+		"name": "extension",
+		"label": "Extension",
+		"extension": "extension",
+		"data": '{"module":"/myproject/my-extension.js","extensionPoint":"my-extension-point","description":"My Extension"}'
 	};
-	return template;
 };

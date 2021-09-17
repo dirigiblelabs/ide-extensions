@@ -8,7 +8,7 @@
  * Contributors:
  *   SAP - initial API and implementation
  */
-exports.getView = function() {
+exports.getView = function () {
 	return {
 		"id": "extensions",
 		"name": "Extensions",
