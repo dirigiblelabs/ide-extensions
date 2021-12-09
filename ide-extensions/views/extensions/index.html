@@ -91,19 +91,19 @@
 
         <script>
             angular.module('extensions', []);
-        angular.module('extensions').controller('ExtensionsController', function ($scope, $http) {
+            angular.module('extensions').controller('ExtensionsController', function ($scope, $http) {
 
-            let extensionsApi = '/services/v4/core/extensions';
+                let extensionsApi = '/services/v4/core/extensions';
 
-            function loadExtensions() {
-                $http.get(extensionsApi)
-                    .then(function (data) {
-                        $scope.extensionPoints = data.data;
-                    });
-            }
+                function loadExtensions() {
+                    $http.get(extensionsApi)
+                        .then(function (data) {
+                            $scope.extensionPoints = data.data;
+                        });
+                }
 
-            loadExtensions();
-        });
+                loadExtensions();
+            });
         </script>
     </body>
 
