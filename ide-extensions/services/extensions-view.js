@@ -8,13 +8,17 @@
  * Contributors:
  *   SAP - initial API and implementation
  */
-exports.getView = function () {
-	return {
-		"id": "extensions",
-		"name": "Extensions",
-		"factory": "frame",
-		"region": "center-top",
-		"label": "Extensions",
-		"link": "../ide-extensions/views/extensions/index.html"
-	};
+
+const viewData = {
+	id: "extensions",
+	factory: "frame",
+	region: "center",
+	label: "Extensions",
+	link: "../ide-extensions/views/extensions.html"
 };
+
+if (typeof exports !== 'undefined') {
+	exports.getView = function () {
+		return viewData;
+	}
+}
