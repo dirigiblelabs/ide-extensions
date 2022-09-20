@@ -103,9 +103,9 @@ angular.module('page', [])
 		$scope.$watch(function () {
 			let extension = JSON.stringify($scope.extension);
 			if (contents !== extension) {
-				messageHub.post({ resourcePath: $scope.file, isDirty: true }, 'resources-core.setEditorDirty');
+				messageHub.post({ resourcePath: $scope.file, isDirty: true }, 'ide-core.setEditorDirty');
 			} else {
-				messageHub.post({ resourcePath: $scope.file, isDirty: false }, 'resources-core.setEditorDirty');
+				messageHub.post({ resourcePath: $scope.file, isDirty: false }, 'ide-core.setEditorDirty');
 			}
 		});
 
