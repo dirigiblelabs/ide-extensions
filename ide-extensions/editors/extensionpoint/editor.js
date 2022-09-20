@@ -104,9 +104,9 @@ angular.module('page', [])
 		$scope.$watch(function () {
 			let extensionpoint = JSON.stringify($scope.extensionpoint);
 			if (contents !== extensionpoint) {
-				messageHub.post({ resourcePath: $scope.file, isDirty: true }, 'ide-core.setEditorDirty');
+				messageHub.post({ resourcePath: $scope.file, isDirty: true }, 'resources-core.setEditorDirty');
 			} else {
-				messageHub.post({ resourcePath: $scope.file, isDirty: false }, 'ide-core.setEditorDirty');
+				messageHub.post({ resourcePath: $scope.file, isDirty: false }, 'resources-core.setEditorDirty');
 			}
 		});
 
