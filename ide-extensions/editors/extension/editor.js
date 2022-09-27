@@ -8,8 +8,19 @@
  * Contributors:
  *   SAP - initial API and implementation
  */
-angular.module('page', [])
-	.controller('PageController', function ($scope) {
+angular.module('page', ["ideUI", "ideView"])
+	.controller('PageController', function ($scope, $http) {
+
+		$http.get("/services/v4/js/ide-extensions/services/extensionPoints.mjs")
+			.then(function (response) {
+				$scope.optionsExtensionPoints = response.data.map(e => {
+					return {
+						text: e,
+						value: e
+					}
+				});
+				load();
+			});
 
 		let messageHub = new FramesMessageHub();
 		let contents;
@@ -49,8 +60,6 @@ angular.module('page', [])
 			$scope.extension = JSON.parse(contents);
 		}
 
-		load();
-
 		function saveContents(text) {
 			console.log('Save called...');
 			if ($scope.file) {
@@ -77,7 +86,7 @@ angular.module('page', [])
 		}
 
 		$scope.save = function () {
-			contents = JSON.stringify($scope.extension);
+			contents = JSON.stringify($scope.extension, null, 4);
 			saveContents(contents);
 		};
 
@@ -101,7 +110,7 @@ angular.module('page', [])
 		);
 
 		$scope.$watch(function () {
-			let extension = JSON.stringify($scope.extension);
+			let extension = JSON.stringify($scope.extension, null, 4);
 			if (contents !== extension) {
 				messageHub.post({ resourcePath: $scope.file, isDirty: true }, 'ide-core.setEditorDirty');
 			} else {
@@ -109,4 +118,19 @@ angular.module('page', [])
 			}
 		});
 
+		$scope.formErrors = {};
+
+		$scope.isValid = function (isValid, property) {
+			$scope.formErrors[property] = !isValid ? true : undefined;
+			for (let next in $scope.formErrors) {
+				if ($scope.formErrors[next] === true) {
+					$scope.isFormValid = false;
+					return;
+				}
+			}
+			$scope.isFormValid = $scope.extension.extensionPoint != null
+				&& $scope.extension.extensionPoint != ""
+				&& $scope.extension.module != null
+				&& $scope.extension.module != "";
+		};
 	});
