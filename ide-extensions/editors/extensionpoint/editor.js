@@ -8,7 +8,7 @@
  * Contributors:
  *   SAP - initial API and implementation
  */
-angular.module('page', [])
+angular.module('page', ["ideUI", "ideView"])
 	.controller('PageController', function ($scope) {
 
 		let messageHub = new FramesMessageHub();
@@ -77,13 +77,13 @@ angular.module('page', [])
 		}
 
 		$scope.save = function () {
-			contents = JSON.stringify($scope.extensionpoint);
+			contents = JSON.stringify($scope.extensionpoint, null, 4);
 			saveContents(contents);
 		};
 
 		messageHub.subscribe(
 			function () {
-				let extensionpoint = JSON.stringify($scope.extensionpoint);
+				let extensionpoint = JSON.stringify($scope.extensionpoint, null, 4);
 				if (contents !== extensionpoint) {
 					$scope.save();
 				}
@@ -94,7 +94,7 @@ angular.module('page', [])
 		messageHub.subscribe(
 			function (msg) {
 				let file = msg.data && typeof msg.data === 'object' && msg.data.file;
-				let extensionpoint = JSON.stringify($scope.extensionpoint);
+				let extensionpoint = JSON.stringify($scope.extensionpoint, null, 4);
 				if (file && file === $scope.file && contents !== extensionpoint)
 					$scope.save();
 			},
@@ -102,12 +102,26 @@ angular.module('page', [])
 		);
 
 		$scope.$watch(function () {
-			let extensionpoint = JSON.stringify($scope.extensionpoint);
+			let extensionpoint = JSON.stringify($scope.extensionpoint, null, 4);
 			if (contents !== extensionpoint) {
 				messageHub.post({ resourcePath: $scope.file, isDirty: true }, 'ide-core.setEditorDirty');
 			} else {
 				messageHub.post({ resourcePath: $scope.file, isDirty: false }, 'ide-core.setEditorDirty');
 			}
 		});
+
+		$scope.formErrors = {};
+
+		$scope.isValid = function (isValid, property) {
+			$scope.formErrors[property] = !isValid ? true : undefined;
+			for (let next in $scope.formErrors) {
+				if ($scope.formErrors[next] === true) {
+					$scope.isFormValid = false;
+					return;
+				}
+			}
+			$scope.isFormValid = $scope.extensionpoint.name != null
+				&& $scope.extensionpoint.name != "";
+		};
 
 	});
