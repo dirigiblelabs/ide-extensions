@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010-2020 SAP and others.
+ * Copyright (c) 2010-2022 SAP and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
@@ -8,14 +8,16 @@
  * Contributors:
  *   SAP - initial API and implementation
  */
-exports.getEditor = function () {
-	return {
-		"id": "extension",
-		"name": "Extension",
-		"factory": "frame",
-		"region": "center-top",
-		"label": "Extension",
-		"link": "../ide-extensions/editors/extension/editor.html",
-		"contentTypes": ["application/json+extension"]
-	};
+const editorData = {
+	id: "extension",
+	label: "Extension",
+	factory: "frame",
+	region: "center",
+	link: "../ide-extensions/editors/extension/editor.html",
+	contentTypes: ["application/json+extension"]
 };
+if (typeof exports !== 'undefined') {
+	exports.getEditor = function () {
+		return editorData;
+	}
+}
