@@ -32,7 +32,7 @@ angular.module('page', ["ideUI", "ideView"])
 				return xhr.responseText;
 			} else {
 				$scope.state.error = true;
-				$scope.errorMessage = "Unable to load the file. See console, for more information."
+				$scope.errorMessage = "Unable to load the file. See console, for more information.";
 				messageHub.setStatusError(`Error loading '${$scope.dataParameters.file}'`);
 				return '{}';
 			}
